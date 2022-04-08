@@ -5,7 +5,7 @@
 	.def	_HariMain;	.scl	2;	.type	32;	.endef
 _HariMain:
 	pushl	%ebp
-	movl	$655360, %ecx
+	xorl	%ecx, %ecx
 	movl	%esp, %ebp
 	pushl	%ebx
 	pushl	%eax
@@ -15,9 +15,9 @@ L6:
 	movl	%edx, %ebx
 	cltd
 	idivl	%ebx
-	movb	%dl, (%ecx)
+	movb	%dl, 655360(%ecx)
 	incl	%ecx
-	cmpl	$720895, %ecx
+	cmpl	$65535, %ecx
 	jle	L6
 L7:
 	call	_io_hlt
